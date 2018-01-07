@@ -39,6 +39,12 @@
 			</div>
 
 			<div class="col-xs-12">
+				<label>Order by</label>
+				<a ng-click="vm.setOrderBy('first_photo.views')" class="btn btn-default">Number of views</a>
+				<a ng-click="vm.setOrderBy('first_photo.datetaken')" class="btn btn-default">Date taken</a>
+				<a ng-click="vm.setOrderBy('first_photo.dateuploaded')" class="btn btn-default">Date uploaded</a>
+				<a ng-click="vm.setOrderBy('first_photo.ownername')" class="btn btn-default">Owner's name</a>
+
 				<button class="btn btn-primary pull-right" type="submit">Submit</button>
 			</div>
 		</form>
@@ -47,15 +53,26 @@
 			{{vm.serverError}}
 		</div>
 
-		<a ui-sref="" class="alert alert-info" ng-repeat="result in vm.global.results track by $index">
-			<div>Search tag: <strong>{{result.search_tag}}</strong></div>
-			<div>Square image (url_q) <strong>{{result.first_photo.url_q}}</strong></div>
-			<div>Owners name <strong>{{result.first_photo.ownername}}</strong></div>
-			<div>Uploaded date  <strong>{{result.formatted_uploaded_date}}</strong></div>
-			<div>Taken date: <strong>{{result.first_photo.datetaken}}</strong></div>
-			<div>Number of views: <strong>{{result.first_photo.views}}</strong></div>
+		<a ui-sref=""
+			class="alert alert-info"
+			ng-repeat="
+				result in vm.global.results
+				| orderBy: vm.orderBy
+			"
+			>
+			<div class="">
+				<div>Search tag: <strong>{{result.search_tag}}</strong></div>
+				<div>Owners name <strong>{{result.first_photo.ownername}}</strong></div>
+				<div>Uploaded date  <strong>{{result.formatted_uploaded_date}}</strong></div>
+				<div>Taken date: <strong>{{result.first_photo.datetaken}}</strong></div>
+				<div>Number of views: <strong>{{result.first_photo.views}}</strong></div>
+			</div>
 
-			<img src="{{result.first_photo.url_q}}">
+			<div class="">
+				<img src="{{result.first_photo.url_q}}">
+			</div>
+
+			<!-- <img src="https://farm{{result.photos.photo[0].farm}}.staticflickr.com/{{result.photos.photo[0].server}}/{{result.photos.photo[0].id}}_{{result.photos.photo[0].secret}}.jpg"> -->
 		</a>
 	</div>
 </div>
