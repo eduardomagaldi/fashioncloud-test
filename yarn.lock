@@ -83,6 +83,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-messages@^1.6.8:
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.6.8.tgz#4f1090b6ee38081fd073c5dfb7576016d18fc458"
+
 angular-mocks@^1.6.8:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.6.8.tgz#ba2120057b4edaa56492d8789ddfbc8f18afa3c5"

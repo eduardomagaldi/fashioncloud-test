@@ -25,9 +25,9 @@ require('./states.helper.test');
 require('./main.helper.test');
 
 require('../../../home/home.test');
-require('../../../lazy/lazy.test');
+// require('../../../lazy/lazy.test');
 require('../../../page404/page404.test');
-require('../../../animals/animals.test');
-require('../../../animalsType/animalsType.test');
+// require('../../../animals/animals.test');
+// require('../../../animalsType/animalsType.test');
 
 mocha.run();

@@ -1,5 +1,61 @@
 <div class="container">
 	<div class="column-xs-12">
-		<h1>Home</h1>
+		<form
+			name="vm.tagForm"
+			ng-submit="vm.submitForm(vm.tagForm.$valid)"
+			novalidate
+			autocomplete="nope"
+			autocomplete="off"
+			class="row"
+			>
+			<div class="form-group col-sm-6"
+				ng-class="{
+					'has-error':
+					(vm.tagForm.tag.$touched ||
+					vm.tagForm.$submitted) && vm.tagForm.tag.$invalid
+				}">
+				<label for="tag">Tag *</label>
+				<input type="text" name="tag" class="form-control" placeholder="Tag name"
+					ng-model="vm.tag"
+					required>
+
+				<div class="help-block"
+					ng-messages="vm.tagForm.tag.$error"
+					ng-if="vm.tagForm.tag.$touched || vm.tagForm.$submitted"
+					>
+					<p ng-message="required">Tag field is mandatory.</p>
+				</div>
+			</div>
+			<div class="form-group col-sm-6"
+				ng-class="{
+					'has-error':
+					(vm.tagForm.userId.$touched ||
+					vm.tagForm.$submitted) && vm.tagForm.userId.$invalid
+				}">
+				<label for="userId">User ID</label>
+				<input type="text" name="userId" class="form-control" placeholder="Optional filter by flickr user name"
+					ng-model="vm.userId"
+					>
+			</div>
+
+			<div class="col-xs-12">
+				<button class="btn btn-primary pull-right" type="submit">Submit</button>
+			</div>
+		</form>
+
+		<div class="alert alert-danger" ng-if="vm.serverError">
+			{{vm.serverError}}
+		</div>
+
+		<a ui-sref="" class="alert alert-info" ng-repeat="result in vm.global.results track by $index">
+			<div>Search tag: <strong>{{result.search_tag}}</strong></div>
+			<div>Square image (url_q) <strong>{{result.first_photo.url_q}}</strong></div>
+			<div>Owners name <strong>{{result.first_photo.ownername}}</strong></div>
+			<div>Uploaded date  <strong>{{result.formatted_uploaded_date}}</strong></div>
+			<div>Taken date: <strong>{{result.first_photo.datetaken}}</strong></div>
+			<div>Number of views: <strong>{{result.first_photo.views}}</strong></div>
+
+			<img src="{{result.first_photo.url_q}}">
+		</a>
 	</div>
 </div>

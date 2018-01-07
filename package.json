@@ -3,7 +3,9 @@
 	"description": "",
 	"version": "1.0.0",
 	"main": "webpack.config.js",
-	"dependencies": {},
+	"dependencies": {
+		"angular-messages": "^1.6.8"
+	},
 	"devDependencies": {
 		"@uirouter/angularjs": "^1.0.11",
 		"angular": "^1.6.7",
