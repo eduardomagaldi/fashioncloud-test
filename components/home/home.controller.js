@@ -4,7 +4,6 @@ controller.$inject = ['homeDataService', '$rootScope'];
 function controller(homeDataService, $rootScope) {
 	const vm = this;
 
-	vm.tag = 'elephant';
 	vm.orderBy = 'first_photo.views';
 
 	$rootScope.results = [];
@@ -17,6 +16,8 @@ function controller(homeDataService, $rootScope) {
 
 	function submitForm(valid) {
 		if (valid) {
+			vm.loading = true;
+
 			homeDataService.getTagInfo(
 				{
 					tag: vm.tag,
@@ -45,8 +46,7 @@ function controller(homeDataService, $rootScope) {
 
 			let result = {
 				search_tag: vm.tag,
-				first_photo: firstPhoto,
-				formatted_uploaded_date: new Date(parseInt(firstPhoto.dateupload, 10))
+				first_photo: firstPhoto
 			};
 
 			if (vm.userId) {
@@ -56,6 +56,8 @@ function controller(homeDataService, $rootScope) {
 			result.first_photo.views = parseInt(result.first_photo.views, 10);
 
 			$rootScope.results.push(result);
+
+			vm.loading = false;
 
 			resetForm();
 		}

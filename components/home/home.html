@@ -33,7 +33,7 @@
 					vm.tagForm.$submitted) && vm.tagForm.userId.$invalid
 				}">
 				<label for="userId">User ID</label>
-				<input type="text" name="userId" class="form-control" placeholder="Optional filter by flickr user name"
+				<input type="text" name="userId" class="form-control" placeholder="Optional filter by flickr user id ex: 45469117@N08"
 					ng-model="vm.userId"
 					>
 			</div>
@@ -45,7 +45,7 @@
 				<a ng-click="vm.setOrderBy('first_photo.dateuploaded')" class="btn btn-default">Date uploaded</a>
 				<a ng-click="vm.setOrderBy('first_photo.ownername')" class="btn btn-default">Owner's name</a>
 
-				<button class="btn btn-primary pull-right" type="submit">Submit</button>
+				<button ng-disabled="!vm.tagForm.$valid || vm.loading" class="btn btn-primary pull-right" type="submit">Submit</button>
 			</div>
 		</form>
 
@@ -53,28 +53,31 @@
 			{{vm.serverError}}
 		</div>
 
-		<a ui-sref="photos({
-				tag: result.search_tag,
-				userId: result.user_id || 'anyuser',
-				pageNum: 1
-			})"
-			class="alert alert-info"
-			ng-repeat="
-				result in vm.global.results
-				| orderBy: vm.orderBy
-			"
-			>
-			<div class="">
-				<div>Search tag: <strong>{{result.search_tag}}</strong></div>
-				<div>Owners name <strong>{{result.first_photo.ownername}}</strong></div>
-				<div>Uploaded date  <strong>{{result.formatted_uploaded_date}}</strong></div>
-				<div>Taken date: <strong>{{result.first_photo.datetaken}}</strong></div>
-				<div>Number of views: <strong>{{result.first_photo.views}}</strong></div>
-			</div>
+		<div class="results-wrapper row">
+			<p ng-if="vm.loading" class="loading">Loading...</p>
 
-			<div class="">
-				<img ng-src="{{result.first_photo.url_q}}">
+			<div ng-repeat="result in vm.global.results | orderBy: vm.orderBy" class="col-md-6">
+				<a ui-sref="photos({
+						tag: result.search_tag,
+						userId: result.user_id || 'anyuser',
+						pageNum: 1
+					})"
+					class="alert alert-info"
+
+					>
+					<div class="col">
+						<img ng-src="{{result.first_photo.url_q}}">
+					</div>
+
+					<div class="col">
+						<div>Search tag: <strong>{{result.search_tag}}</strong></div>
+						<div>Owners name <strong>{{result.first_photo.ownername}}</strong></div>
+						<div>Uploaded date: <strong>{{result.first_photo.dateupload}}</strong></div>
+						<div>Taken date: <strong>{{result.first_photo.datetaken}}</strong></div>
+						<div>Number of views: <strong>{{result.first_photo.views}}</strong></div>
+					</div>
+				</a>
 			</div>
-		</a>
+		</div>
 	</div>
 </div>
