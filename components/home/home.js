@@ -8,10 +8,6 @@ const name = 'home',
 
 require('./' + name + '.styl');
 
-// mainHelper.setModule({
-// 	moduleName
-// });
-
 require('./' + name + '.data.service');
 
 mainHelper.setComponent({
@@ -23,12 +19,6 @@ mainHelper.setComponent({
 		animals: '<'
 	}
 });
-
-// mainHelper.setConfig({
-// 	name,
-// 	moduleName,
-// 	config: config
-// });
 
 module.exports = moduleName;
 

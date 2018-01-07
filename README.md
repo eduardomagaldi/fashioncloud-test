@@ -1,6 +1,6 @@
 # Boilerplate Angular.js ES6
 
-Check out the [demo](https://eduardomagaldi.github.io/boilerplate-angularjs-es6/public/) and the [tests](https://eduardomagaldi.github.io/boilerplate-angularjs-es6/public/tests).
+Check out the [demo](https://eduardomagaldi.github.io/fashioncloud-test/public/) and the [tests](https://eduardomagaldi.github.io/fashioncloud-test/public/tests).
 
 ## TLDR;
 

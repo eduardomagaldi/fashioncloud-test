@@ -46,6 +46,8 @@
 				<a ng-click="vm.setOrderBy('first_photo.ownername')" class="btn btn-default">Owner's name</a>
 
 				<button ng-disabled="!vm.tagForm.$valid || vm.loading" class="btn btn-primary pull-right" type="submit">Submit</button>
+
+				<button ng-click="vm.resetForm()" class="btn btn-default pull-right" type="submit">Cancel</button>
 			</div>
 		</form>
 

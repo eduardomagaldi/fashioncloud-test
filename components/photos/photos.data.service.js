@@ -13,7 +13,7 @@ angular
 function service($http) {
 	return {
 		getAll: function(tag, userId, pageNum) {
-			var url = [
+			let url = [
 				'https://api.flickr.com/services/rest/',
 				'?method=flickr.photos.search',
 				'&api_key=84a09d680272ffb49a9a9583e09807c9',

@@ -11,6 +11,7 @@ function controller(homeDataService, $rootScope) {
 
 	vm.submitForm = submitForm;
 	vm.setOrderBy = setOrderBy;
+	vm.resetForm = resetForm;
 
 	/////////////
 

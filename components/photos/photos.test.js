@@ -1,6 +1,6 @@
 import mainHelper from '../main/js/main.helper';
 
-const name = 'animalsType',
+const name = 'photos',
 	template = require('./' + name + '.html'),
 	controller = require('./' + name + '.controller'),
 	moduleName = 'app.' + name;
@@ -35,58 +35,40 @@ describe(name + ' component', () => {
 		angular.module(moduleName).factory.restore();
 	});
 
-	it('should request ' + name + ' data by type', (done) => {
+	it('should request ' + name + ' data by tag and page', (done) => {
 		angular.mock.module(moduleName);
 		angular.mock.inject([
 			'$injector',
 			name + 'DataService',
-			function($injector, animalsTypeDataService) {
-				chai.expect(animalsTypeDataService).to.be.a('object');
-				chai.expect(animalsTypeDataService.getByType).to.be.a('function');
+			function($injector, photosDataService) {
+				chai.expect(photosDataService).to.be.a('object');
+				chai.expect(photosDataService.getAll).to.be.a('function');
 
 				const $httpBackend = $injector.get('$httpBackend');
 
-				$httpBackend.when('GET', 'data/animals.json')
-					.respond([{
-						type: 'Reptile'
-					}]);
+				let url = [
+						'https://api.flickr.com/services/rest/',
+						'?method=flickr.photos.search',
+						'&api_key=84a09d680272ffb49a9a9583e09807c9',
+						'&tags=elephant',
+						'&sort=interestingness-desc',
+						'&format=json',
+						'&per_page=10',
+						'&page=1',
+					],
+					dataPromise;
 
-				$httpBackend.expectGET('data/animals.json');
+				url = url.join('');
 
-				let animalsType = animalsTypeDataService.getByType('Reptile');
+				$httpBackend.when('GET', url)
+					.respond('jsonFlickrApi({})');
 
-				animalsType.then((data) => {
+				$httpBackend.expectGET(url);
+
+				dataPromise = photosDataService.getAll('elephant', 'anyuser', 1);
+
+				dataPromise.then((data) => {
 					chai.expect(data).to.be.a('object');
-					done();
-				});
-
-				$httpBackend.flush();
-			}
-		]);
-	});
-
-	it('should request ' + name + ' image data', (done) => {
-		angular.mock.module(moduleName);
-		angular.mock.inject([
-			'$injector',
-			name + 'DataService',
-			function($injector, animalsTypeDataService) {
-				chai.expect(animalsTypeDataService).to.be.a('object');
-				chai.expect(animalsTypeDataService.getAnimalImage).to.be.a('function');
-
-				const $httpBackend = $injector.get('$httpBackend');
-
-				$httpBackend.when('GET', 'data/image.json')
-					.respond({media: 'mediaURL'});
-
-				$httpBackend.expectGET('data/image.json');
-
-				let callbackMockFunction = sinon.spy(),
-					animalsType = animalsTypeDataService.getAnimalImage('Reptile', callbackMockFunction);
-
-				animalsType.then((data) => {
-					chai.expect(data).to.be.a('object');
-					chai.expect(callbackMockFunction.firstCall.args[0]).to.be.a('string');
 					done();
 				});
 

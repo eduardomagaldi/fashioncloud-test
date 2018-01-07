@@ -16,7 +16,7 @@ function controller($stateParams) {
 
 	function onInit() {
 		vm.photoList = vm.photos.photos.photo;
-		vm.lastPageNum = parseInt(vm.photos.photos.pages, 10)
+		vm.lastPageNum = parseInt(vm.photos.photos.pages, 10);
 
 		for (let i = -2; i <= 2; i++) {
 			let itemNum = vm.pageNum + i;

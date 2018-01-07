@@ -5,7 +5,7 @@ describe('Main module', () => {
 
 			require('../app.module.js');
 
-			chai.assert(spyModule.calledOnce);
+			chai.assert(spyModule.called);
 			chai.assert(spyModule.calledWith('app'));
 
 			angular.module.restore();

@@ -13,7 +13,7 @@ angular
 function service($http) {
 	return {
 		getTagInfo: function(data, onServerSuccess, onServerError) {
-			var url = [
+			let url = [
 				'https://api.flickr.com/services/rest/',
 				'?method=flickr.photos.search',
 				'&api_key=84a09d680272ffb49a9a9583e09807c9',
@@ -30,8 +30,6 @@ function service($http) {
 
 			return $http.get(url.join(''))
 				.then(function(resp) {
-					console.log('resp.data', resp.data);
-
 					if (resp.status === 200) {
 						onServerSuccess(resp.data);
 					} else {
