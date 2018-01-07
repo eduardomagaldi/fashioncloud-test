@@ -33,8 +33,8 @@ function config(
 	});
 
 	statesHelper.setState($stateProvider, {
-		name: 'animalsType',
-		url: '/animals/{animalType}',
+		name: 'photos',
+		url: '/photos/{tag}',
 		lazy: true
 	});
 

@@ -53,7 +53,7 @@
 			{{vm.serverError}}
 		</div>
 
-		<a ui-sref=""
+		<a ui-sref="photos({tag: result.search_tag})"
 			class="alert alert-info"
 			ng-repeat="
 				result in vm.global.results
@@ -71,8 +71,6 @@
 			<div class="">
 				<img src="{{result.first_photo.url_q}}">
 			</div>
-
-			<!-- <img src="https://farm{{result.photos.photo[0].farm}}.staticflickr.com/{{result.photos.photo[0].server}}/{{result.photos.photo[0].id}}_{{result.photos.photo[0].secret}}.jpg"> -->
 		</a>
 	</div>
 </div>

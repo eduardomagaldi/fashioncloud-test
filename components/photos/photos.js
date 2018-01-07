@@ -1,7 +1,7 @@
 import mainHelper from '../main/js/main.helper';
 import statesHelper from '../main/js/states.helper';
 
-const name = 'animalsType',
+const name = 'photos',
 	template = require('./' + name + '.html'),
 	controller = require('./' + name + '.controller'),
 	moduleName = 'app.' + name;
@@ -20,7 +20,7 @@ mainHelper.setComponent({
 	controller,
 	moduleName,
 	bindings: {
-		animalsType: '<'
+		photos: '<'
 	}
 });
 
@@ -36,13 +36,13 @@ config.$inject = ['$stateProvider'];
 function config($stateProvider) {
 	statesHelper.setState($stateProvider, {
 		name,
-		url: '/animals/{animalType}',
+		url: '/photos/{tag}',
 		resolve: {
-			animalsType: [
-				'animalsTypeDataService',
+			photos: [
+				'photosDataService',
 				'$stateParams',
-				function resolve(animalsTypeDataService, $stateParams) {
-					return animalsTypeDataService.getByType($stateParams.animalType);
+				function resolve(photosDataService, $stateParams) {
+					return photosDataService.getAll($stateParams.tag, $stateParams.userId);
 				}
 			]
 		}

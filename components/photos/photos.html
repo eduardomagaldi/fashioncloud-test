@@ -1,0 +1,8 @@
+<div class="container">
+	<div class="column-xs-12">
+		<h1>All photos</h1>
+		<div class="alert alert-info" ng-repeat="photo in vm.photoList track by $index">
+			<img src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg">
+		</div>
+	</div>
+</div>
