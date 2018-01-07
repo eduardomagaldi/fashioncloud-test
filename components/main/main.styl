@@ -1,0 +1,18 @@
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+// Extra small devices (phones, 0px and up)
+@import 'styles/variables.styl';
+@import 'styles/common.styl';
+@import 'styles/general-extra-small.styl';
+
+// Small devices (tablets, 768px and up)
+@media (min-width: $smallMinWidth)
+	@import 'styles/general-small.styl';
+
+// Medium devices (desktops, 992px and up)
+@media (min-width: $mediumMinWidth)
+	@import 'styles/general-medium.styl';
+
+// Large devices (large desktops, 1200px and up)
+@media (min-width: $largeMinWidth)
+	@import 'styles/general-large.styl';

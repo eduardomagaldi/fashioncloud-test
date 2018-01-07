@@ -1,0 +1,37 @@
+[
+	{
+		"id": 1,
+		"type": "Mammal",
+		"list": ["aardvark", "antelope", "bear", "boar", "buffalo", "calf", "cavy", "cheetah", "deer", "dolphin", "elephant", "fruitbat", "giraffe", "girl", "goat", "gorilla", "hamster", "hare", "leopard", "lion", "lynx", "mink", "mole", "mongoose", "opossum", "oryx", "platypus", "polecat", "pony", "porpoise", "puma", "pussycat", "raccoon", "reindeer", "seal", "sealion", "squirrel", "vampire", "vole", "wallaby", "wolf"]
+	},
+	{
+		"id": 2,
+		"type": "Bird",
+		"list": ["chicken", "crow", "dove", "duck", "flamingo", "gull", "hawk", "kiwi", "lark", "ostrich", "parakeet", "penguin", "pheasant", "rhea", "skimmer", "skua", "sparrow", "swan", "vulture", "wren"]
+	},
+	{
+		"id": 3,
+		"type": "Reptile",
+		"list": ["pitviper", "seasnake", "slowworm", "tortoise", "tuatara"]
+	},
+	{
+		"id": 4,
+		"type": "Fish",
+		"list": ["bass", "carp", "catfish", "chub", "dogfish", "haddock", "herring", "pike", "piranha", "seahorse", "sole", "stingray", "tuna"]
+	},
+	{
+		"id": 5,
+		"type": "Amphibian",
+		"list": ["frog", "frog", "newt", "toad"]
+	},
+	{
+		"id": 6,
+		"type": "Bug",
+		"list": ["flea", "gnat", "honeybee", "housefly", "ladybird", "moth", "termite", "wasp"]
+	},
+	{
+		"id": 7,
+		"type": "Invertebrate",
+		"list": ["clam", "crab", "crayfish", "lobster", "octopus", "scorpion", "seawasp", "slug", "starfish", "worm"]
+	}
+]

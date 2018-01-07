@@ -1,0 +1,96 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"experimentalObjectRestSpread": true
+		}
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:angular/johnpapa"
+	],
+	"globals": {
+		"require": false,
+		"define": false,
+		"angular": false,
+		"$": false,
+		"module": false,
+		"System": false,
+		"chai": false,
+		"describe": false,
+		"beforeEach": false,
+		"sinon": false,
+		"expect": false,
+		"window": false,
+		"mocha": false,
+		"it": false
+	},
+	"rules": {
+		"indent": [
+			"error",
+			"tab"
+		],
+		"linebreak-style": 0,
+		"eqeqeq": "error",
+		"quotes": [
+			"error",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"no-redeclare": [
+			2,
+			{"builtinGlobals": true}
+		],
+		"one-var": [
+			"error",
+			"always"
+		],
+		"no-irregular-whitespace": [
+			"error",
+			{"skipComments": true}
+		],
+		"key-spacing": [
+			2,
+			{
+				"singleLine": {
+					"beforeColon": false,
+					"afterColon": true
+				},
+				"multiLine": {
+					"beforeColon": false,
+					"afterColon": true
+				}
+			}
+		],
+		"comma-spacing": [
+			"error",
+			{
+				"before": false,
+				"after": true
+			}
+		],
+		"no-trailing-spaces": "error",
+		"func-call-spacing": [
+			"error",
+			"never"
+		],
+		"space-infix-ops": "error",
+		"space-before-function-paren": [
+			"error",
+			"never"
+		],
+		"space-before-blocks": "error",
+		"radix": "error",
+
+		"angular/function-type": [2, "named"],
+		"angular/file-name": [2,{"typeSeparator":"dot","ignoreTypeSuffix":true}],
+		"angular/module-getter": 0
+	}
+}

@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="column-xs-12">
+		<h1>Animals</h1>
+
+		<h3>Animal Types:</h3>
+		<ul>
+			<li ng-repeat="animal in vm.animals track by $index">
+				<a ui-sref-active="active" ui-sref="animalsType({animalType: animal.type})">
+					{{animal.type}}
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
