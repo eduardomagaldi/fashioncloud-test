@@ -25,7 +25,7 @@ function service($http) {
 			];
 
 			if (data.userId) {
-				url.push('&user_id=69868933%40N07');
+				url.push('&user_id=' + data.userId);
 			}
 
 			return $http.get(url.join(''))

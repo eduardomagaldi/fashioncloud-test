@@ -23,18 +23,8 @@ function config(
 	});
 
 	statesHelper.setState($stateProvider, {
-		name: 'lazy',
-		lazy: true
-	});
-
-	statesHelper.setState($stateProvider, {
-		name: 'animals',
-		lazy: true
-	});
-
-	statesHelper.setState($stateProvider, {
 		name: 'photos',
-		url: '/photos/{tag}',
+		url: '/photos',
 		lazy: true
 	});
 

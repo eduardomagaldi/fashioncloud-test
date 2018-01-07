@@ -2,7 +2,69 @@
 	<div class="column-xs-12">
 		<h1>All photos</h1>
 		<div class="alert alert-info" ng-repeat="photo in vm.photoList track by $index">
-			<img src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg">
+			<img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg">
 		</div>
+
+		<nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li>
+					<a ui-sref="photos({
+							tag: vm.tag,
+							userId: vm.userId || 'anyuser',
+							pageNum: 1
+						})"
+						aria-label="First"
+						>
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li>
+					<a ui-sref="photos({
+							tag: vm.tag,
+							userId: vm.userId || 'anyuser',
+							pageNum: vm.pageNum - 1 || 1
+						})"
+						aria-label="Previous"
+						>
+						<span aria-hidden="true"><</span>
+					</a>
+				</li>
+
+				<li ng-repeat="item in vm.pagination track by $index" ng-class="{active: item.active}">
+					<a ui-sref="photos({
+							tag: vm.tag,
+							userId: vm.userId  || 'anyuser',
+							pageNum: item.itemNum
+						})"
+						aria-label="Next"
+						>
+						<span>{{item.itemNum}}</span>
+					</a>
+				</li>
+
+				<li>
+					<a ui-sref="photos({
+							tag: vm.tag,
+							userId: vm.userId  || 'anyuser',
+							pageNum: vm.pageNum + 1
+						})"
+						aria-label="Next"
+						>
+						<span aria-hidden="true">></span>
+					</a>
+				</li>
+				<li>
+					<a ui-sref="photos({
+							tag: vm.tag,
+							userId: vm.userId  || 'anyuser',
+							pageNum: vm.lastPageNum
+						})"
+						aria-label="Last"
+						>
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
 	</div>
 </div>

@@ -4,16 +4,29 @@ controller.$inject = ['$stateParams'];
 function controller($stateParams) {
 	const vm = this;
 
-	vm.title = 'Animals type:';
-	vm.animalType = 'bla';
+	vm.tag = $stateParams.tag;
+	vm.userId = $stateParams.userId;
+	vm.pageNum = parseInt($stateParams.pageNum, 10);
 
+	vm.pagination = [];
 
-
-	this.$onInit = function() {
-		vm.photoList = vm.photos.photos.photo;
-
-		console.log('vm.photoList', vm.photoList);
-	};
+	vm.$onInit = onInit;
 
 	////////////
+
+	function onInit() {
+		vm.photoList = vm.photos.photos.photo;
+		vm.lastPageNum = parseInt(vm.photos.photos.pages, 10)
+
+		for (let i = -2; i <= 2; i++) {
+			let itemNum = vm.pageNum + i;
+
+			if (itemNum > 0 && itemNum <= vm.lastPageNum) {
+				vm.pagination.push({
+					itemNum,
+					active: itemNum === vm.pageNum
+				});
+			}
+		}
+	}
 }

@@ -12,7 +12,7 @@ angular
 
 function service($http) {
 	return {
-		getAll: function(tag, userId) {
+		getAll: function(tag, userId, pageNum) {
 			var url = [
 				'https://api.flickr.com/services/rest/',
 				'?method=flickr.photos.search',
@@ -20,12 +20,13 @@ function service($http) {
 				'&tags=' + tag,
 				'&sort=interestingness-desc',
 				// '&extras=date_upload%2C+date_taken%2C+owner_name%2C+views%2C+url_q',
+				'&format=json',
 				'&per_page=10',
-				'&format=json'
+				'&page=' + pageNum,
 			];
 
-			if (userId) {
-				url.push('&user_id=69868933%40N07');
+			if (userId && userId !== 'anyuser') {
+				url.push('&user_id=' + userId);
 			}
 
 			return $http.get(url.join(''))

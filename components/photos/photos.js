@@ -36,13 +36,13 @@ config.$inject = ['$stateProvider'];
 function config($stateProvider) {
 	statesHelper.setState($stateProvider, {
 		name,
-		url: '/photos/{tag}',
+		url: '/photos/{tag}/{userId}/{pageNum}',
 		resolve: {
 			photos: [
 				'photosDataService',
 				'$stateParams',
 				function resolve(photosDataService, $stateParams) {
-					return photosDataService.getAll($stateParams.tag, $stateParams.userId);
+					return photosDataService.getAll($stateParams.tag, $stateParams.userId, $stateParams.pageNum);
 				}
 			]
 		}

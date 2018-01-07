@@ -53,7 +53,11 @@
 			{{vm.serverError}}
 		</div>
 
-		<a ui-sref="photos({tag: result.search_tag})"
+		<a ui-sref="photos({
+				tag: result.search_tag,
+				userId: result.user_id || 'anyuser',
+				pageNum: 1
+			})"
 			class="alert alert-info"
 			ng-repeat="
 				result in vm.global.results
@@ -69,7 +73,7 @@
 			</div>
 
 			<div class="">
-				<img src="{{result.first_photo.url_q}}">
+				<img ng-src="{{result.first_photo.url_q}}">
 			</div>
 		</a>
 	</div>
